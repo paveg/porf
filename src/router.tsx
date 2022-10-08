@@ -4,6 +4,6 @@ import { Profile } from './containers/Profile';
 import { Root } from './containers/Root';
 
 export const Router = createBrowserRouter([
-	{ path: '/', element: <Root /> },
-	{ path: '/profile', element: <Profile /> }
+  { path: '/', element: <Root /> },
+  { path: '/profile', element: <Profile /> }
 ]);

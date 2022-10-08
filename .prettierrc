@@ -1,6 +1,6 @@
 {
 	"jsxSingleQuote": true,
-	"useTabs": true,
+	"useTabs": false,
 	"arrowParens": "always",
 	"semi": true,
 	"singleQuote": true,
