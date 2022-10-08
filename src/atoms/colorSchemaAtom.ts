@@ -8,5 +8,5 @@ export enum SchemaType {
 
 export const atomColorSchema = atom<SchemaTypes>({
   key: 'colorSchema',
-  default: 'light'
+  default: SchemaType.Light
 });
