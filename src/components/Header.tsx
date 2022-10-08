@@ -4,14 +4,13 @@ import {
   Container,
   Group,
   Burger,
-  Avatar,
-  Button
+  Avatar
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import React, { FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { atomColorSchema, SchemaType } from '../atoms/colorSchemaAtom';
+import { SchemaType } from '../atoms/colorSchemaAtom';
+import { ColorSchemaButton } from './parts/ColorSchemaButton';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -39,12 +38,13 @@ const useStyles = createStyles((theme) => ({
     padding: '8px 12px',
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    color: theme.colorScheme === SchemaType.Dark ? theme.colors.dark[0] : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
+      backgroundColor:
+        theme.colorScheme === SchemaType.Dark ? theme.colors.dark[6] : theme.colors.gray[0]
     }
   },
 
@@ -65,7 +65,6 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [colorSchema, setColorSchema] = useRecoilState(atomColorSchema);
 
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
@@ -90,18 +89,7 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
         <Avatar radius={'xl'} src={'icon.jpeg'} />
         <Group className={classes.links} spacing={5}>
           {items}
-          <Button
-            ml='md'
-            onClick={() => {
-              colorSchema === SchemaType.Light
-                ? setColorSchema(SchemaType.Dark)
-                : setColorSchema(SchemaType.Light);
-            }}
-            radius='md'
-            size='xs'
-          >
-            {colorSchema === SchemaType.Light ? 'Dark Mode' : 'Light Mode'}
-          </Button>
+          <ColorSchemaButton />
         </Group>
         <Burger className={classes.burger} onClick={toggle} opened={opened} size='sm' />
       </Container>
