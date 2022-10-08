@@ -67,9 +67,9 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
 
   const items = links.map((link: HeaderLink) => (
     <a
-      key={link.label}
-      href={link.link}
       className={cx(classes.link, { [classes.linkActive]: location.pathname === link.link })}
+      href={link.link}
+      key={link.label}
       onClick={(event) => {
         event.preventDefault();
         navigate(link.link);
@@ -82,12 +82,12 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
   return (
     <MantineHeader height={60} mb={120}>
       <Container className={classes.header}>
-        <Avatar src={'icon.jpeg'} radius={'xl'} />
-        <Group spacing={5} className={classes.links}>
+        <Avatar radius={'xl'} src={'icon.jpeg'} />
+        <Group className={classes.links} spacing={5}>
           {items}
         </Group>
 
-        <Burger opened={opened} onClick={toggle} className={classes.burger} size='sm' />
+        <Burger className={classes.burger} onClick={toggle} opened={opened} size='sm' />
       </Container>
     </MantineHeader>
   );
