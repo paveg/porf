@@ -4,11 +4,14 @@ import {
   Container,
   Group,
   Burger,
-  Avatar
+  Avatar,
+  Button
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import React, { FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { atomColorSchema, SchemaType } from '../atoms/colorSchemaAtom';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -62,6 +65,8 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [colorSchema, setColorSchema] = useRecoilState(atomColorSchema);
+
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
 
@@ -85,8 +90,19 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
         <Avatar radius={'xl'} src={'icon.jpeg'} />
         <Group className={classes.links} spacing={5}>
           {items}
+          <Button
+            ml='md'
+            onClick={() => {
+              colorSchema === SchemaType.Light
+                ? setColorSchema(SchemaType.Dark)
+                : setColorSchema(SchemaType.Light);
+            }}
+            radius='md'
+            size='xs'
+          >
+            {colorSchema === SchemaType.Light ? 'Dark Mode' : 'Light Mode'}
+          </Button>
         </Group>
-
         <Burger className={classes.burger} onClick={toggle} opened={opened} size='sm' />
       </Container>
     </MantineHeader>
