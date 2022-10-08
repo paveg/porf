@@ -11,12 +11,14 @@
     "lint:fix": "eslint --fix --cache --ext .ts,.tsx --quiet src",
     "prettier": "prettier --write --cache -c src",
     "gitmoji": "gitmoji",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "compile": "npx tsc"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
       "yarn run lint:fix",
-      "yarn run prettier"
+      "yarn run prettier",
+      "bash -c 'yarn run compile'"
     ]
   },
   "dependencies": {

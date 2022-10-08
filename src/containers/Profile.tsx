@@ -8,7 +8,7 @@ export const Profile: FC = () => {
   return (
     <>
       <Header links={Links} />
-      <Container>Profile Page</Container>
+      <Container>Profile</Container>
       <Footer />
     </>
   );

@@ -8,7 +8,7 @@ export const Root: FC = () => {
   return (
     <>
       <Header links={Links} />
-      <Container>Home Page</Container>
+      <Container>Home</Container>
       <Footer />
     </>
   );
