@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.yarn-integrity
 
 node_modules
 dist
@@ -24,3 +25,12 @@ dist-ssr
 *.sw?
 
 .eslintcache
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+.tool-versions
