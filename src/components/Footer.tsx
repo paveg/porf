@@ -44,37 +44,37 @@ export function Footer() {
     <div className={classes.footer}>
       <Container className={classes.inner}>
         <IconBeer size={28} />
-        <Group spacing={0} className={classes.links} position='right' noWrap={true}>
+        <Group className={classes.links} noWrap={true} position='right' spacing={0}>
           <ActionIcon
             mr='md'
-            onClick={(event) => {
+            onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               openExternalLink(event, 'https://twitter.com/_pavlog');
             }}
+            radius='xl'
             size='lg'
             variant='default'
-            radius='xl'
           >
             <IconBrandTwitter size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             mr='md'
-            onClick={(event) => {
+            onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               openExternalLink(event, 'https://www.youtube.com/channel/UCOzQFkpb0_XvHnC-wPh_h0g');
             }}
+            radius='xl'
             size='lg'
             variant='default'
-            radius='xl'
           >
             <IconBrandYoutube size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             mr='md'
-            onClick={(event) => {
+            onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               openExternalLink(event, 'https://www.instagram.com/_pavlog/');
             }}
+            radius='xl'
             size='lg'
             variant='default'
-            radius='xl'
           >
             <IconBrandInstagram size={18} stroke={1.5} />
           </ActionIcon>
