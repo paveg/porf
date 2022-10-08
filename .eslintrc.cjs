@@ -27,5 +27,28 @@ module.exports = {
 		sourceType: 'module'
 	},
 	plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier', 'import', 'unused-imports'],
-	rules: {}
+	rules: {
+		'import/no-default-export': 'error',
+		'import/no-duplicates': 'error',
+		'import/order': [
+			'error',
+			{
+				alphabetize: {
+					caseInsensitive: true,
+					order: 'asc'
+				},
+				groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type']
+			}
+		],
+		'unused-imports/no-unused-imports': 'error',
+		'unused-imports/no-unused-vars': [
+			'error',
+			{
+				args: 'all',
+				argsIgnorePattern: '^_',
+				vars: 'all',
+				varsIgnorePattern: '^_'
+			}
+		]
+	}
 };

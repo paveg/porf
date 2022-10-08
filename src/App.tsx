@@ -1,6 +1,6 @@
+import { MantineProvider } from '@mantine/core';
 import { React, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { MantineProvider } from '@mantine/core';
 import { RouterProvider } from 'react-router-dom';
 import { Router } from './Router';
 
