@@ -1,4 +1,3 @@
-import { React, FC } from 'react';
 import {
 	createStyles,
 	Header as MantineHeader,
@@ -8,6 +7,7 @@ import {
 	Avatar
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import React, { FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
@@ -53,17 +53,19 @@ const useStyles = createStyles((theme) => ({
 	}
 }));
 
+type HeaderLink = { link: string; label: string };
+export type HeaderLinks = HeaderLink[];
 interface HeaderProps {
-	links: { link: string; label: string }[];
+	links: HeaderLinks;
 }
 
-export const Header: FC = ({ links }: HeaderProps) => {
+export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const [opened, { toggle }] = useDisclosure(false);
 	const { classes, cx } = useStyles();
 
-	const items = links.map((link) => (
+	const items = links.map((link: HeaderLink) => (
 		<a
 			key={link.label}
 			href={link.link}

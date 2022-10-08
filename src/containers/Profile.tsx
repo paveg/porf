@@ -1,11 +1,11 @@
-import { React, FC } from 'react';
+import React, { FC } from 'react';
 import { Header } from '../components/Header';
-import { HeaderLinks } from '../consts/HeaderLinks';
+import { Links } from '../consts/HeaderLinks';
 
 export const Profile: FC = () => {
 	return (
 		<>
-			<Header links={HeaderLinks} />
+			<Header links={Links} />
 		</>
 	);
 };
