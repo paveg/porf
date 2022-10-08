@@ -2,13 +2,13 @@ import { MantineProvider } from '@mantine/core';
 import React, { FC, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { Router } from './Router';
+import { AppRoutes } from './routes';
 
 const App: FC = () => {
   return (
     <StrictMode>
       <MantineProvider withGlobalStyles={true} withNormalizeCSS={true}>
-        <RouterProvider router={Router} />
+        <RouterProvider router={AppRoutes} />
       </MantineProvider>
     </StrictMode>
   );

@@ -1,9 +1,8 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { Profile } from './containers/Profile';
-import { Root } from './containers/Root';
+import { Profile, Root } from './containers';
 
-export const Router = createBrowserRouter([
+export const AppRoutes = createBrowserRouter([
   { path: '/', element: <Root /> },
   { path: '/profile', element: <Profile /> }
 ]);
