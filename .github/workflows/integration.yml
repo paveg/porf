@@ -1,0 +1,19 @@
+name: Check the source code
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: Check the source code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: yarn install --immutable
+      - name: Prettier
+        run: yarn run prettier
+      - name: ESLint
+        run: yarn run lint
+      - name: TypeCheck
+        run: npx tsc
