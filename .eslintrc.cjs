@@ -28,6 +28,13 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier', 'import', 'unused-imports'],
   rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useRecoilCallback|useRecoilTransaction_UNSTABLE)'
+      }
+    ],
     'react/jsx-sort-props': 'error',
     'import/no-default-export': 'error',
     'import/no-duplicates': 'error',

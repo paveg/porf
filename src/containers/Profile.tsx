@@ -1,15 +1,12 @@
 import { Container } from '@mantine/core';
 import React, { FC } from 'react';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { Links } from '../consts/HeaderLinks';
-
+import { Layout } from '../Layout';
 export const Profile: FC = () => {
   return (
     <>
-      <Header links={Links} />
-      <Container>Profile</Container>
-      <Footer />
+      <Layout>
+        <Container>Profile</Container>
+      </Layout>
     </>
   );
 };
