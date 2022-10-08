@@ -1,12 +1,14 @@
 import { React, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { MantineProvider, Text } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
+import { RouterProvider } from 'react-router-dom';
+import { Router } from './router';
 
 const App: FC = () => {
 	return (
 		<StrictMode>
 			<MantineProvider withGlobalStyles={true} withNormalizeCSS={true}>
-				<Text>Welcome to Mantine!</Text>
+				<RouterProvider router={Router} />
 			</MantineProvider>
 		</StrictMode>
 	);
