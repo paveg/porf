@@ -84,14 +84,19 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
   ));
 
   return (
-    <MantineHeader height={60} mb={120}>
+    <MantineHeader height={60} mb={30}>
       <Container className={classes.header}>
-        <Avatar radius={'xl'} src={'icon.jpeg'} />
+        <Avatar radius='xl' src='icon.jpeg' />
         <Group className={classes.links} spacing={5}>
           {items}
           <ColorSchemeSwitch />
         </Group>
-        <Burger className={classes.burger} onClick={toggle} opened={opened} size='sm' />
+        <Burger // TODO: Should implement opened burger menu
+          className={classes.burger}
+          onClick={toggle}
+          opened={opened}
+          size='sm'
+        />
       </Container>
     </MantineHeader>
   );
