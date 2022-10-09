@@ -1,5 +1,6 @@
 import { createStyles, Title, Text, Button, Container, Group } from '@mantine/core';
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -41,6 +42,7 @@ const useStyles = createStyles((theme) => ({
 
 export const NotFound: FC = () => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
   return (
     <Container className={classes.root}>
@@ -51,7 +53,14 @@ export const NotFound: FC = () => {
         been moved to another URL.
       </Text>
       <Group position='center'>
-        <Button size='md' variant='subtle'>
+        <Button
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            event.preventDefault();
+            navigate('/');
+          }}
+          size='md'
+          variant='subtle'
+        >
           Take me back to home page
         </Button>
       </Group>
