@@ -2,13 +2,14 @@ import React, { FC, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import { NotFound } from './containers/NotFound';
 import { AppRoutes } from './routes';
 
 const App: FC = () => {
   return (
     <StrictMode>
       <RecoilRoot>
-        <RouterProvider router={AppRoutes} />
+        <RouterProvider fallbackElement={<NotFound />} router={AppRoutes} />
       </RecoilRoot>
     </StrictMode>
   );
