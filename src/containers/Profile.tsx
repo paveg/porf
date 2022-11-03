@@ -68,24 +68,6 @@ export const Profile: FC = () => {
               </List>
             </Spoiler>
           </Group>
-          <Title mb='lg' order={2} size='h3'>
-            Personal Background
-          </Title>
-          <Group mb='xl'>
-            <Spoiler hideLabel='Hide' maxHeight={120} showLabel='Show more'>
-              <List>
-                <List.Item>Dec, 1991 - Born in Tokyo, Japan and raised in Saitama</List.Item>
-                <List.Item>May, 2004 - Graduated from Sunahara elementary school</List.Item>
-                <List.Item>May, 2007 - Graduated from Washinomiya junior high school</List.Item>
-                <List.Item>May, 2010 - Graduated from Shohei high school</List.Item>
-                <List.Item>
-                  May, 2015 - Graduated from Senshu University (Major in political science)
-                </List.Item>
-                <List.Item>Jul, 2016 - Moved to Tokyo</List.Item>
-                <List.Item>Aug, 2021 - Moved to Saitama again from Tokyo</List.Item>
-              </List>
-            </Spoiler>
-          </Group>
           <Group mb='lg'>
             <ProfileCard
               avatar='profile.jpeg'
