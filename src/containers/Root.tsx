@@ -1,9 +1,11 @@
 import { Container, Title } from '@mantine/core';
-import { t } from 'i18next';
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Layout } from '../Layout';
 
 export const Root: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Layout>

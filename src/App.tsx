@@ -1,16 +1,17 @@
-import { init } from 'i18next';
+import { use } from 'i18next';
 import React, { FC, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
+import { initReactI18next } from 'react-i18next';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { NotFound } from './containers/NotFound';
-import { en } from './locales/en';
-import { ja } from './locales/ja';
+import { ja, en } from './locales/index';
 import { AppRoutes } from './routes';
 
-init({
+use(initReactI18next).init({
   lng: 'ja',
   debug: true,
+  fallbackLng: 'en',
   resources: {
     ja: ja,
     en: en
