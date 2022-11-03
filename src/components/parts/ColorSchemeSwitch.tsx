@@ -18,6 +18,7 @@ export const ColorSchemeSwitch: FC = () => {
     <Group my={30} position='center'>
       <Switch
         checked={colorScheme === SchemeType.Dark}
+        mb={16}
         offLabel={<IconMoonStars color={theme.colors.gray[6]} size={20} stroke={1.5} />}
         onChange={() => toggleColorScheme()}
         onLabel={<IconSun color={theme.white} size={20} stroke={1.5} />}
