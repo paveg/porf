@@ -2,6 +2,7 @@ import { Container, Title, Group, Spoiler, List, Text } from '@mantine/core';
 import React, { FC } from 'react';
 import { ProfileCard } from '../components/ProfileCard';
 import { Layout } from '../Layout';
+
 export const Profile: FC = () => {
   return (
     <>

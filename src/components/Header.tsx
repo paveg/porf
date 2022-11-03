@@ -11,6 +11,7 @@ import React, { FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SchemeType } from '../atoms/colorSchemeAtom';
 import { ColorSchemeSwitch } from './parts/ColorSchemeSwitch';
+import { LanguageSelect } from './parts/LanguageSelect';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -90,6 +91,7 @@ export const Header: FC<HeaderProps> = ({ links }: HeaderProps) => {
         <Group className={classes.links} spacing={5}>
           {items}
           <ColorSchemeSwitch />
+          <LanguageSelect />
         </Group>
         <Burger // TODO: Should implement opened burger menu
           className={classes.burger}
