@@ -76,7 +76,6 @@ export const Profile: FC = () => {
               avatar='profile.jpeg'
               email='pavegy+work@gmail.com'
               name='Ryota Ikezawa'
-              phone='080-5538-9043'
               title='Software Engineer'
             />
           </Group>
