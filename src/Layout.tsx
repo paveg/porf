@@ -18,7 +18,14 @@ export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       >
         <Header links={Links} />
         {children}
-        <Footer />
+        <Footer
+          links={[
+            {
+              link: '/privacy',
+              label: 'Privacy Policy'
+            }
+          ]}
+        />
       </MantineProvider>
     </>
   );

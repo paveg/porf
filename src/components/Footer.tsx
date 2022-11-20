@@ -1,6 +1,7 @@
-import { createStyles, Group, ActionIcon, Container } from '@mantine/core';
+import { createStyles, Group, ActionIcon, Container, Anchor } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconBeer } from '@tabler/icons';
-import React from 'react';
+import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -29,8 +30,16 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-export function Footer() {
+type Props = {
+  links: {
+    link: string;
+    label: string;
+  }[];
+};
+
+export const Footer: FC<Props> = ({ links }: Props) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
   const openExternalLink = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -40,10 +49,27 @@ export function Footer() {
     window.open(link);
   };
 
+  const items = links.map((link) => (
+    <Anchor<'a'>
+      color='dimmed'
+      href={link.link}
+      key={link.label}
+      onClick={(event) => {
+        event.preventDefault();
+        navigate(link.link);
+      }}
+      size='sm'
+      sx={{ lineHeight: 1 }}
+    >
+      {link.label}
+    </Anchor>
+  ));
+
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
         <IconBeer size={28} />
+        <Group className={classes.links}>{items}</Group>
         <Group className={classes.links} noWrap={true} position='right' spacing={0}>
           <ActionIcon
             mr='md'
@@ -82,4 +108,4 @@ export function Footer() {
       </Container>
     </div>
   );
-}
+};

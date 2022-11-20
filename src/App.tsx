@@ -1,4 +1,5 @@
 import { use } from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import React, { FC, StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initReactI18next } from 'react-i18next';
@@ -8,15 +9,22 @@ import { NotFound } from './containers/NotFound';
 import { ja, en } from './locales/index';
 import { AppRoutes } from './routes';
 
-use(initReactI18next).init({
-  lng: 'ja',
-  debug: true,
-  fallbackLng: 'en',
-  resources: {
-    ja: ja,
-    en: en
-  }
-});
+const detectOption = {
+  htmlTag: document.documentElement,
+  order: ['cookie', 'localStorage', 'navigator', 'htmlTag']
+};
+
+use(initReactI18next)
+  .use(LanguageDetector)
+  .init({
+    detection: detectOption,
+    debug: true,
+    fallbackLng: 'en',
+    resources: {
+      ja: ja,
+      en: en
+    }
+  });
 
 const App: FC = () => {
   return (
