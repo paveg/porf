@@ -11,6 +11,12 @@ export const translation = {
     freeeDetail3: 'Developed new funding service on funding development team (Jun 2019 - Jun 2022)',
     freeeDetail4: 'Developing on Global development team (Jul 2022 - Present)',
     privacyTitle: 'Privacy Policy',
-    xtopDetail1: 'Detailed design work to migrate on-premise network to AWS'
+    xtopDetail1: 'Detailed design work to migrate on-premise network to AWS',
+    notFound: {
+      title: 'You have found a secret place.',
+      description:
+        'Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL.',
+      action: 'Take me back to home page'
+    }
   }
 };
