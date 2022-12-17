@@ -1,4 +1,4 @@
-import { LoadingOverlay, Pagination } from '@mantine/core';
+import { LoadingOverlay, Pagination, useMantineTheme } from '@mantine/core';
 import axios from 'axios';
 import React, { FC, useState } from 'react';
 import {
@@ -14,14 +14,18 @@ import {
   TooltipProps
 } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
+import { useRecoilValue } from 'recoil';
 import useSWR from 'swr';
+import { atomColorScheme, SchemeType } from '../../atoms/colorSchemeAtom';
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export const RoomInformation: FC = () => {
+  const theme = useMantineTheme();
   const key = import.meta.env.SHEET_API_KEY;
   const limit = 500;
   const [page, setPage] = useState(1);
+  const themeColor = useRecoilValue(atomColorScheme);
   const spreadsheetId = '1cLXt-FMqr3yVh0l0uVCLTPo4w8z9-ervm35C0hym32o';
   const { data, error } = useSWR(
     `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/NatureRemo?key=${key}`,
@@ -63,8 +67,9 @@ export const RoomInformation: FC = () => {
     if (active && payload && payload.length) {
       const style = {
         padding: '0 6px',
-        backgroundColor: '#fff',
-        border: '0.5px solid #ccc'
+        backgroundColor: theme.white,
+        color: theme.black,
+        border: `0.5px solid ${theme.colors.gray[2]}`
       };
       return (
         <div className='custom-tooltip' style={style}>
@@ -81,7 +86,6 @@ export const RoomInformation: FC = () => {
 
     return null;
   };
-
   return (
     <>
       <div style={{ width: '100%', height: 400 }}>
@@ -93,11 +97,23 @@ export const RoomInformation: FC = () => {
           >
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <CartesianGrid stroke='#f5f5f5' />
+            <CartesianGrid
+              stroke={themeColor === SchemeType.Dark ? theme.colors.gray[7] : theme.colors.gray[2]}
+            />
             <XAxis dataKey='name' />
             <YAxis />
-            <Area dataKey='humidity' fill='#00ebc7' stroke='#000' type='monotone' />
-            <Bar dataKey='temperature' stroke='#ff5470' type='monotone' />
+            <Area
+              dataKey='humidity'
+              fill={themeColor === SchemeType.Dark ? theme.colors.blue[5] : theme.colors.blue[8]}
+              stroke={themeColor === SchemeType.Dark ? theme.colors.gray[4] : theme.colors.blue[5]}
+              type='monotone'
+            />
+            <Bar
+              dataKey='temperature'
+              fill={themeColor === SchemeType.Dark ? theme.colors.red[9] : theme.colors.red[7]}
+              stroke={themeColor === SchemeType.Dark ? theme.colors.red[9] : theme.colors.red[7]}
+              type='monotone'
+            />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
