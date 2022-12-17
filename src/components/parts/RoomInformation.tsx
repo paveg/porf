@@ -20,34 +20,29 @@ import { atomColorScheme, SchemeType } from '../../atoms/colorSchemeAtom';
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
+type Data = { name: Date; temperature: string; humidity: string; lumen: string };
+
 export const RoomInformation: FC = () => {
+  const [page, setPage] = useState(1);
   const theme = useMantineTheme();
+  const themeColor = useRecoilValue(atomColorScheme);
   const key = import.meta.env.SHEET_API_KEY;
   const limit = 500;
-  const [page, setPage] = useState(1);
-  const themeColor = useRecoilValue(atomColorScheme);
   const spreadsheetId = '1cLXt-FMqr3yVh0l0uVCLTPo4w8z9-ervm35C0hym32o';
   const { data, error } = useSWR(
     `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/NatureRemo?key=${key}`,
     fetcher
   );
   if (error || data === undefined) return <LoadingOverlay overlayBlur={2} visible={true} />;
-
-  const timeIndex = 0;
-  const temperatureIndex = 1;
-  const humidityIndex = 2;
-  const lumenIndex = 3;
   const values = data.values;
-  if (values[0] === '時間') values.shift();
-  const shapedData: { name: string; temperature: string; humidity: string; lumen: string }[] =
-    values.map((d: Array<string>) => {
-      return {
-        name: d[timeIndex],
-        temperature: d[temperatureIndex],
-        humidity: d[humidityIndex],
-        lumen: d[lumenIndex]
-      };
-    });
+  const shapedData = values.slice(1, values.length).map((d: Array<Data>) => {
+    return {
+      name: d[0],
+      temperature: d[1],
+      humidity: d[2],
+      lumen: d[3]
+    };
+  });
   const total = Math.ceil(shapedData.length / limit) || 1;
 
   const getIntroOfPage = (label: NameType | undefined) => {
